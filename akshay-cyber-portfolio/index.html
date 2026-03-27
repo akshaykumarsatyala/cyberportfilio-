@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Akshay Kumar Satyala — Cybersecurity Analyst</title>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="css/rooms.css"/>
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- MATRIX RAIN -->
+<canvas id="matrix-canvas"></canvas>
+
+<!-- TRANSITION OVERLAY -->
+<div id="overlay"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">AKS<span>::</span>CYBER</div>
+  <div class="nav-dots" id="navDots"></div>
+  <div class="nav-status">
+    <div class="status-dot"></div>
+    SECURE CONNECTION ACTIVE
+  </div>
+</nav>
+
+<!-- PROGRESS -->
+<div id="progress"></div>
+<div id="room-label"></div>
+
+<!-- SCROLL HINT -->
+<div id="scroll-hint">
+  <div class="s-arrows"><div class="sa"></div><div class="sa"></div><div class="sa"></div></div>
+  NAVIGATE
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     WORLD — 7 ROOMS
+═══════════════════════════════════════════════════════ -->
+<div id="world">
+<div id="track">
+
+
+<!-- ══ ROOM 0: HERO ══ -->
+<div class="room" id="r0">
+  <div class="floor"></div>
+
+  <div class="room-wrap" style="align-items:center;">
+
+    <!-- LEFT: Hero text -->
+    <div class="hero-left">
+      <div class="hero-access">ACCESS_GRANTED — OPERATOR AUTHENTICATED</div>
+      <h1 class="hero-name">
+        AKSHAY<br>
+        KUMAR <span class="grn glitch">SATYALA</span>
+      </h1>
+      <div class="hero-role">
+        <span style="color:var(--green2)">> </span>
+        <span id="typedText"></span><span style="color:var(--green);animation:blink 1s infinite">█</span>
+      </div>
+      <p class="hero-desc">
+        Computer Science Engineer turned Cybersecurity Analyst. EIH Authorized.
+        Specializing in penetration testing, vulnerability assessment, and secure system design.
+        Building defenses that matter.
+      </p>
+      <div class="hero-btns">
+        <button class="btn-hack" onclick="goRoom(3)">View Projects</button>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="btn-hack btn-hack-red">GitHub ↗</a>
+        <a href="https://linkedin.com/in/akshaysatyala" target="_blank" class="btn-hack">LinkedIn ↗</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: Boot terminal -->
+    <div class="hero-screens">
+      <div class="h-screen s1 terminal">
+        <div class="terminal-bar">
+          <div class="t-dot" style="background:#FF5F57"></div>
+          <div class="t-dot" style="background:#FEBC2E"></div>
+          <div class="t-dot" style="background:#28C840"></div>
+          <span>boot_sequence.sh</span>
+        </div>
+        <div class="terminal-body" id="bootLines" style="min-height:140px;max-height:140px;overflow:hidden;">
+        </div>
+      </div>
+      <div class="h-screen s2 terminal" style="margin-top:8px;">
+        <div class="terminal-bar">
+          <div class="t-dot" style="background:#FF5F57"></div>
+          <div class="t-dot" style="background:#FEBC2E"></div>
+          <div class="t-dot" style="background:#28C840"></div>
+          <span>whoami.sh</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="t-g">akshay</span><span class="t-dim">@cyber</span><span class="t-g">:~$ </span>whoami</div>
+          <div class="t-w">akshay_kumar_satyala</div>
+          <div><span class="t-g">akshay@cyber:~$ </span>id</div>
+          <div class="t-c">uid=1337(analyst) gid=1337</div>
+          <div><span class="t-g">akshay@cyber:~$ </span><span style="animation:blink 1s infinite;color:var(--green)">█</span></div>
+        </div>
+      </div>
+      <div class="h-screen s3 terminal" style="margin-top:8px;">
+        <div class="terminal-bar" style="background:rgba(0,255,255,0.07);">
+          <div class="t-dot" style="background:#FF5F57"></div>
+          <div class="t-dot" style="background:#FEBC2E"></div>
+          <div class="t-dot" style="background:#28C840"></div>
+          <span style="color:var(--cyan)">nmap_scan.sh</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-c">Scanning: 192.168.1.0/24</div>
+          <div class="t-g">PORT  STATE  SERVICE</div>
+          <div>22    open   ssh</div>
+          <div>80    open   http</div>
+          <div>443   open   https</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats row -->
+  <div class="hero-stats-row">
+    <div><div class="stat-n">4+</div><div class="stat-l">Cyber Projects</div></div>
+    <div><div class="stat-n">EIH</div><div class="stat-l">Authorized</div></div>
+    <div><div class="stat-n">1st</div><div class="stat-l">UDGAMA Hackathon</div></div>
+    <div><div class="stat-n">MERN</div><div class="stat-l">Full-Stack Dev</div></div>
+  </div>
+</div>
+
+
+<!-- ══ ROOM 1: ABOUT ══ -->
+<div class="room" id="r1">
+  <div class="floor"></div>
+  <div class="room-wrap">
+
+    <div class="about-text">
+      <div class="room-tag">Identity Confirmed</div>
+      <h2 class="room-heading">Who Is<br><span class="grn">The Analyst?</span></h2>
+      <p class="room-para">
+        I'm <strong>Akshay Kumar Satyala</strong> — a Computer Science Engineering student at JNTUK (2022–2026) who operates at the intersection of <strong>full-stack development and cybersecurity</strong>.
+      </p>
+      <p class="room-para">
+        Authorized as an <strong>Ethical & Independent Hacker (EIH)</strong> — I specialize in penetration testing, vulnerability assessment, network security, and secure MERN application design.
+      </p>
+      <p class="room-para">
+        My philosophy: <strong>"The best offense is understanding the defense."</strong> I build secure systems by thinking like an attacker — and I've proven it by winning the UDGAMA National Hackathon.
+      </p>
+      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+        <a class="btn-hack" href="mailto:akshaysatyala@gmail.com">akshaysatyala@gmail.com</a>
+        <a class="btn-hack" href="tel:+918143960739">+91 81439 60739</a>
+      </div>
+    </div>
+
+    <div class="about-card-3d">
+      <div class="terminal" style="width:360px;">
+        <div class="terminal-bar">
+          <div class="t-dot" style="background:#FF5F57"></div>
+          <div class="t-dot" style="background:#FEBC2E"></div>
+          <div class="t-dot" style="background:#28C840"></div>
+          <span>profile.json</span>
+        </div>
+        <div class="terminal-body" style="font-size:12px;line-height:2;">
+          <div class="t-dim">{</div>
+          <div style="padding-left:16px"><span class="t-c">"name"</span>: <span class="t-g">"Akshay Kumar Satyala"</span>,</div>
+          <div style="padding-left:16px"><span class="t-c">"role"</span>: <span class="t-g">"Cybersecurity Analyst"</span>,</div>
+          <div style="padding-left:16px"><span class="t-c">"cert"</span>: <span class="t-y">"EIH Authorized"</span>,</div>
+          <div style="padding-left:16px"><span class="t-c">"edu"</span>: <span class="t-g">"B.Tech CSE @ JNTUK"</span>,</div>
+          <div style="padding-left:16px"><span class="t-c">"location"</span>: <span class="t-g">"Andhra Pradesh, IN"</span>,</div>
+          <div style="padding-left:16px"><span class="t-c">"stack"</span>: [<span class="t-g">"MERN"</span>, <span class="t-g">"Linux"</span>],</div>
+          <div style="padding-left:16px"><span class="t-c">"hackathon"</span>: <span class="t-y">"UDGAMA 1st 🏆"</span>,</div>
+          <div style="padding-left:16px"><span class="t-c">"available"</span>: <span class="t-g">true</span></div>
+          <div class="t-dim">}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══ ROOM 2: SKILLS ══ -->
+<div class="room" id="r2">
+  <div class="floor"></div>
+  <div class="room-wrap skills-room" style="flex-direction:column;justify-content:center;">
+    <div>
+      <div class="room-tag">Capability Index</div>
+      <h2 class="room-heading">Skills &amp; <span class="grn">Arsenal</span></h2>
+    </div>
+    <div class="skills-grid-3d">
+
+      <div class="sk-card">
+        <div class="sk-cat">🔴 Offensive Security</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Penetration Testing</span>
+          <span class="sk-pill">Ethical Hacking</span>
+          <span class="sk-pill">Nmap / Nessus</span>
+          <span class="sk-pill">Metasploit</span>
+          <span class="sk-pill">Burp Suite</span>
+          <span class="sk-pill">SQLMap</span>
+        </div>
+      </div>
+
+      <div class="sk-card">
+        <div class="sk-cat">🛡️ Defensive Security</div>
+        <div class="sk-pills">
+          <span class="sk-pill">SIEM Tools</span>
+          <span class="sk-pill">IDS/IPS</span>
+          <span class="sk-pill">Firewall Config</span>
+          <span class="sk-pill">Log Analysis</span>
+          <span class="sk-pill">Incident Response</span>
+          <span class="sk-pill">Risk Assessment</span>
+        </div>
+      </div>
+
+      <div class="sk-card">
+        <div class="sk-cat">🌐 Network Security</div>
+        <div class="sk-pills">
+          <span class="sk-pill">TCP/IP Protocols</span>
+          <span class="sk-pill">DNS Architecture</span>
+          <span class="sk-pill">Wireshark</span>
+          <span class="sk-pill">VPN / SSL</span>
+          <span class="sk-pill">Network Forensics</span>
+          <span class="sk-pill">Packet Analysis</span>
+        </div>
+      </div>
+
+      <div class="sk-card">
+        <div class="sk-cat">💻 Development (MERN)</div>
+        <div class="sk-pills">
+          <span class="sk-pill">React.js / Redux</span>
+          <span class="sk-pill">Node.js / Express</span>
+          <span class="sk-pill">MongoDB / PostgreSQL</span>
+          <span class="sk-pill">JWT / OAuth</span>
+          <span class="sk-pill">REST APIs</span>
+          <span class="sk-pill">WebSockets</span>
+        </div>
+      </div>
+
+      <div class="sk-card">
+        <div class="sk-cat">🔧 Tools & DevOps</div>
+        <div class="sk-pills">
+          <span class="sk-pill">Kali Linux</span>
+          <span class="sk-pill">Git / GitHub</span>
+          <span class="sk-pill">Docker</span>
+          <span class="sk-pill">CI/CD Pipelines</span>
+          <span class="sk-pill">AWS Basics</span>
+          <span class="sk-pill">Bash Scripting</span>
+        </div>
+      </div>
+
+      <div class="sk-card">
+        <div class="sk-cat">🧠 Core Competencies</div>
+        <div class="sk-pills">
+          <span class="sk-pill">DSA / Algorithms</span>
+          <span class="sk-pill">System Design</span>
+          <span class="sk-pill">OWASP Top 10</span>
+          <span class="sk-pill">Cryptography</span>
+          <span class="sk-pill">Python / C++</span>
+          <span class="sk-pill">OSINT</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ ROOM 3: PROJECTS ══ -->
+<div class="room" id="r3">
+  <div class="floor"></div>
+  <div class="room-wrap proj-room" style="flex-direction:column;justify-content:center;">
+    <div>
+      <div class="room-tag">Operation Files</div>
+      <h2 class="room-heading">Real-World <span class="grn">Projects</span></h2>
+    </div>
+    <div class="proj-scroll-track">
+
+      <div class="proj-card featured">
+        <div class="proj-badge">★ HACKATHON WIN</div>
+        <div class="proj-num">[ 01 ]</div>
+        <div class="proj-title">AgroKnight — Smart Agriculture AI</div>
+        <div class="proj-desc">AI-powered crop disease detection and market price prediction. Built at UDGAMA National Hackathon. Secured infrastructure with JWT auth and input validation.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">React</span><span class="proj-chip">Node.js</span>
+          <span class="proj-chip">MongoDB</span><span class="proj-chip">AI/ML</span>
+          <span class="proj-chip">Docker</span><span class="proj-chip">JWT</span>
+        </div>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="proj-link">⬡ GitHub →</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-badge">CYBER</div>
+        <div class="proj-num">[ 02 ]</div>
+        <div class="proj-title">Network Vulnerability Scanner</div>
+        <div class="proj-desc">Python-based tool that scans target IP ranges, identifies open ports, fingerprints services, and generates a threat report with CVSS scoring.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">Python</span><span class="proj-chip">Nmap</span>
+          <span class="proj-chip">Socket</span><span class="proj-chip">CVE APIs</span>
+          <span class="proj-chip">PDF Report</span>
+        </div>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="proj-link">⬡ GitHub →</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-badge">CYBER</div>
+        <div class="proj-num">[ 03 ]</div>
+        <div class="proj-title">Phishing URL Detector</div>
+        <div class="proj-desc">ML model trained on 50K+ URLs to classify phishing vs legitimate. Feature extraction from URL structure, WHOIS data, and lexical analysis. 96.4% accuracy.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">Python</span><span class="proj-chip">Scikit-learn</span>
+          <span class="proj-chip">NLP</span><span class="proj-chip">WHOIS</span>
+          <span class="proj-chip">Flask API</span>
+        </div>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="proj-link">⬡ GitHub →</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-badge">CYBER</div>
+        <div class="proj-num">[ 04 ]</div>
+        <div class="proj-title">Log Anomaly Detection System</div>
+        <div class="proj-desc">Parses server logs in real-time, flags suspicious IPs, brute-force attempts, and unusual login patterns. Dashboard built in React with live alert feed.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">Python</span><span class="proj-chip">React</span>
+          <span class="proj-chip">Regex</span><span class="proj-chip">WebSocket</span>
+          <span class="proj-chip">MongoDB</span>
+        </div>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="proj-link">⬡ GitHub →</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-badge">CYBER</div>
+        <div class="proj-num">[ 05 ]</div>
+        <div class="proj-title">Password Strength Analyzer &amp; Vault</div>
+        <div class="proj-desc">Analyzes password entropy, checks against HaveIBeenPwned database, and stores credentials in an AES-256 encrypted vault with master password.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">Python</span><span class="proj-chip">AES-256</span>
+          <span class="proj-chip">HaveIBeenPwned API</span>
+          <span class="proj-chip">PBKDF2</span><span class="proj-chip">Tkinter</span>
+        </div>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="proj-link">⬡ GitHub →</a>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">[ 06 ]</div>
+        <div class="proj-title">Secure Real-Time Gaming Platform</div>
+        <div class="proj-desc">Multiplayer gaming platform using WebSocket. Hardened with rate limiting, input sanitization, anti-cheat logic, and session security via JWT.</div>
+        <div class="proj-chips">
+          <span class="proj-chip">React</span><span class="proj-chip">Node.js</span>
+          <span class="proj-chip">WebSocket</span><span class="proj-chip">JWT</span>
+          <span class="proj-chip">Rate Limiting</span>
+        </div>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="proj-link">⬡ GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ ROOM 4: ACHIEVEMENTS ══ -->
+<div class="room" id="r4">
+  <div class="floor"></div>
+  <div class="room-wrap achieve-room" style="align-items:center;">
+
+    <div class="achieve-left">
+      <div class="room-tag">Clearance Records</div>
+      <h2 class="room-heading">Achievements &amp;<br><span class="grn">Missions</span></h2>
+      <p class="room-para">Validated on national stage and in the security community. From winning hackathons to earning ethical hacking authorization.</p>
+
+      <!-- Animated EIH Shield -->
+      <div style="margin-top:28px;text-align:center;">
+        <svg class="eih-shield" width="140" height="160" viewBox="0 0 140 160" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#00FF41" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#00CC33" stop-opacity="0.4"/>
+            </linearGradient>
+          </defs>
+          <path d="M70 8 L128 30 L128 80 Q128 130 70 152 Q12 130 12 80 L12 30 Z"
+                fill="rgba(0,255,65,0.06)" stroke="url(#sg)" stroke-width="1.5"/>
+          <path d="M70 20 L116 38 L116 80 Q116 122 70 140 Q24 122 24 80 L24 38 Z"
+                fill="rgba(0,255,65,0.04)" stroke="rgba(0,255,65,0.3)" stroke-width="0.8"/>
+          <!-- Lock icon -->
+          <rect x="55" y="72" width="30" height="22" rx="3" fill="none" stroke="#00FF41" stroke-width="1.5"/>
+          <path d="M60 72 L60 66 Q60 56 70 56 Q80 56 80 66 L80 72" fill="none" stroke="#00FF41" stroke-width="1.5"/>
+          <circle cx="70" cy="83" r="3" fill="#00FF41"/>
+          <line x1="70" y1="83" x2="70" y2="89" stroke="#00FF41" stroke-width="1.5"/>
+          <!-- Text -->
+          <text x="70" y="115" text-anchor="middle" font-family="'Orbitron',monospace" font-size="8" fill="#00FF41" letter-spacing="2">EIH</text>
+          <text x="70" y="126" text-anchor="middle" font-family="'Share Tech Mono',monospace" font-size="6" fill="rgba(0,255,65,0.6)" letter-spacing="1">AUTHORIZED</text>
+          <!-- Corner marks -->
+          <line x1="30" y1="38" x2="38" y2="38" stroke="rgba(0,255,65,0.4)" stroke-width="1"/>
+          <line x1="30" y1="38" x2="30" y2="46" stroke="rgba(0,255,65,0.4)" stroke-width="1"/>
+          <line x1="110" y1="38" x2="102" y2="38" stroke="rgba(0,255,65,0.4)" stroke-width="1"/>
+          <line x1="110" y1="38" x2="110" y2="46" stroke="rgba(0,255,65,0.4)" stroke-width="1"/>
+        </svg>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--green2);letter-spacing:.15em;margin-top:8px;">ETHICAL &amp; INDEPENDENT HACKER</div>
+      </div>
+    </div>
+
+    <div class="achieve-grid">
+
+      <div class="ach-card top">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-title">UDGAMA National Hackathon — 1st Place</div>
+        <div class="ach-desc">Won 1st place at UDGAMA National Level Hackathon (VVIT Guntur) — 24-hour competition. Built AgroKnight from scratch — AI-powered smart agriculture platform — without prior prep or a pre-formed team.</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">🛡️</div>
+        <div class="ach-title">EIH Authorization</div>
+        <div class="ach-desc">Authorized as an Ethical &amp; Independent Hacker (EIH). Certified to legally perform penetration testing and vulnerability assessments.</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">🔒</div>
+        <div class="ach-title">Security Best Practices</div>
+        <div class="ach-desc">Recognized for implementing HTTPS, XSS prevention, SQL injection protection, and input validation across production applications.</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">✍️</div>
+        <div class="ach-title">Technical Writer &amp; Blogger</div>
+        <div class="ach-desc">Blog posts and tutorials on MERN stack, cybersecurity practices, and software engineering — helping the developer &amp; security community.</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">🎓</div>
+        <div class="ach-title">Workshop Mentor &amp; Lead</div>
+        <div class="ach-desc">Conducted programming and cybersecurity workshops for students, promoting digital literacy and secure coding practices.</div>
+      </div>
+
+      <div class="ach-card">
+        <div class="ach-icon">📈</div>
+        <div class="ach-title">DSA &amp; Competitive Programming</div>
+        <div class="ach-desc">Consistent practice on GFG, LeetCode and competitive programming platforms. Strong foundation in algorithms and system design.</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ ROOM 5: CERTIFICATIONS ══ -->
+<div class="room" id="r5">
+  <div class="floor"></div>
+  <div class="room-wrap certs-room" style="flex-direction:column;justify-content:center;">
+    <div>
+      <div class="room-tag">Credentials Vault</div>
+      <h2 class="room-heading">Certifications &amp; <span class="grn">Clearances</span></h2>
+    </div>
+    <div class="cert-grid">
+
+      <div class="cert-card">
+        <div class="cert-icon">🛡️</div>
+        <div class="cert-name">EIH</div>
+        <div class="cert-org">Ethical &amp; Independent Hacker Authorization</div>
+        <div class="cert-status active">ACTIVE</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🔐</div>
+        <div class="cert-name">MERN Security</div>
+        <div class="cert-org">Secure Full-Stack Development — Self &amp; Projects</div>
+        <div class="cert-status active">VERIFIED</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">☁️</div>
+        <div class="cert-name">AWS Cloud</div>
+        <div class="cert-org">AWS Cloud Fundamentals — Hands-on</div>
+        <div class="cert-status active">COMPLETED</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🐧</div>
+        <div class="cert-name">Linux Admin</div>
+        <div class="cert-org">Linux System Administration &amp; Bash Scripting</div>
+        <div class="cert-status active">VERIFIED</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <div class="cert-name">Network Security</div>
+        <div class="cert-org">TCP/IP, DNS, Wireshark &amp; Packet Analysis</div>
+        <div class="cert-status active">VERIFIED</div>
+      </div>
+
+      <div class="cert-card">
+        <div class="cert-icon">🎯</div>
+        <div class="cert-name">CEH — Target</div>
+        <div class="cert-org">Certified Ethical Hacker — EC-Council</div>
+        <div class="cert-status pending">IN PROGRESS</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ ROOM 6: CONTACT ══ -->
+<div class="room" id="r6">
+  <div class="floor"></div>
+  <div class="room-wrap">
+
+    <div class="contact-left">
+      <div class="room-tag">Open Channel</div>
+      <h2 class="room-heading">Establish<br><span class="grn">Contact.</span></h2>
+      <p class="contact-lead">Available for internships, bug bounties, security consulting, and full-stack opportunities. Ready to deploy.</p>
+      <div class="c-links">
+        <a href="mailto:akshaysatyala@gmail.com" class="c-link"><span class="c-icon">✉</span> akshaysatyala@gmail.com</a>
+        <a href="https://linkedin.com/in/akshaysatyala" target="_blank" class="c-link"><span class="c-icon">in</span> linkedin.com/in/akshaysatyala</a>
+        <a href="https://github.com/akshaykumarsatyala" target="_blank" class="c-link"><span class="c-icon">⬡</span> github.com/akshaykumarsatyala</a>
+        <a href="tel:+918143960739" class="c-link"><span class="c-icon">☏</span> +91 81439 60739</a>
+      </div>
+    </div>
+
+    <div class="contact-form-3d terminal">
+      <div class="terminal-bar">
+        <div class="t-dot" style="background:#FF5F57"></div>
+        <div class="t-dot" style="background:#FEBC2E"></div>
+        <div class="t-dot" style="background:#28C840"></div>
+        <span>send_message.sh</span>
+      </div>
+      <form class="cf-form" id="cfForm">
+        <div>
+          <label class="cf-label">// Sender Name</label>
+          <input class="cf-input" type="text" placeholder="your_name" required/>
+        </div>
+        <div>
+          <label class="cf-label">// Email Address</label>
+          <input class="cf-input" type="email" placeholder="your@email.com" required/>
+        </div>
+        <div>
+          <label class="cf-label">// Message Payload</label>
+          <textarea class="cf-textarea" placeholder="// Describe your mission..." required></textarea>
+        </div>
+        <button class="cf-btn" type="submit" id="cfBtn">[ SEND MESSAGE ]</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+
+</div><!-- end track -->
+</div><!-- end world -->
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script src="js/matrix.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/effects.js"></script>
+
+<style>
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+</style>
+</body>
+</html>

@@ -1,0 +1,315 @@
+/* ============================================================
+   AKSHAY KUMAR SATYALA — CYBERSECURITY PORTFOLIO
+   css/style.css — Base styles, variables, reset
+============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+
+:root {
+  /* HACKER COLOR PALETTE */
+  --green:       #00FF41;
+  --green2:      #00CC33;
+  --green-dim:   rgba(0,255,65,0.12);
+  --green-glow:  rgba(0,255,65,0.25);
+  --red:         #FF2D2D;
+  --red-dim:     rgba(255,45,45,0.12);
+  --cyan:        #00FFFF;
+  --cyan-dim:    rgba(0,255,255,0.1);
+  --bg:          #000000;
+  --bg2:         #050F05;
+  --bg3:         #0A1A0A;
+  --bg4:         #0F200F;
+  --text:        #C8FAC8;
+  --text2:       #5A8A5A;
+  --text3:       #2A4A2A;
+  --border:      rgba(0,255,65,0.15);
+  --border2:     rgba(0,255,65,0.3);
+
+  /* FONTS */
+  --mono:    'Share Tech Mono', monospace;
+  --display: 'Orbitron', monospace;
+  --body:    'Rajdhani', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--body);
+}
+
+body { cursor: none; }
+
+/* ── SCANLINE OVERLAY ── */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.08) 2px,
+    rgba(0,0,0,0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9990;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cur {
+  width: 12px; height: 12px;
+  background: var(--green);
+  position: fixed; top: 0; left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+  animation: curSpin 3s linear infinite;
+  box-shadow: 0 0 12px var(--green);
+}
+#cur-ring {
+  width: 44px; height: 44px;
+  border: 1px solid var(--green2);
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 9998;
+  clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  transition: transform .12s linear, width .2s, height .2s;
+  filter: drop-shadow(0 0 6px var(--green));
+}
+#cur-ring.h { width: 60px; height: 60px; }
+@keyframes curSpin { to { transform: rotate(360deg); } }
+
+/* ── PROGRESS BAR ── */
+#progress {
+  position: fixed; bottom: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--green2), var(--cyan));
+  z-index: 800;
+  box-shadow: 0 0 10px var(--green);
+  transition: width .1s;
+}
+
+/* ── ROOM LABEL ── */
+#room-label {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text2); letter-spacing: .15em;
+  text-transform: uppercase; z-index: 800;
+}
+
+/* ── TRANSITION OVERLAY ── */
+#overlay {
+  position: fixed; inset: 0;
+  background: var(--bg);
+  z-index: 700;
+  opacity: 0; pointer-events: none;
+  transition: opacity .3s;
+}
+#overlay.show { opacity: 1; pointer-events: all; }
+
+/* ── MATRIX RAIN CANVAS ── */
+#matrix-canvas {
+  position: fixed; inset: 0;
+  z-index: 0;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 800;
+  padding: 16px 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(180deg, rgba(0,0,0,0.97) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--display);
+  font-size: 14px; color: var(--green);
+  letter-spacing: .15em;
+  text-shadow: 0 0 16px var(--green);
+}
+.nav-logo span { color: var(--red); }
+.nav-dots { display: flex; gap: 8px; align-items: center; }
+.nav-dot {
+  width: 10px; height: 10px;
+  border: 1px solid var(--text3);
+  clip-path: polygon(50% 0%,100% 50%,50% 100%,0% 50%);
+  cursor: pointer; transition: all .3s;
+  background: transparent;
+}
+.nav-dot.active {
+  background: var(--green);
+  border-color: var(--green);
+  box-shadow: 0 0 10px var(--green);
+  transform: scale(1.3);
+}
+.nav-status {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--green2); letter-spacing: .12em;
+  display: flex; align-items: center; gap: 8px;
+}
+.status-dot {
+  width: 6px; height: 6px;
+  background: var(--green); border-radius: 50%;
+  animation: blink 1.2s ease infinite;
+  box-shadow: 0 0 6px var(--green);
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.2} }
+
+/* ── WORLD / TRACK ── */
+#world {
+  width: 100%; height: 100vh;
+  overflow: hidden; position: relative;
+}
+#track {
+  display: flex;
+  width: 700vw;
+  height: 100vh;
+  transition: transform .95s cubic-bezier(.77,0,.18,1);
+  will-change: transform;
+}
+
+/* ── ROOM BASE ── */
+.room {
+  width: 100vw; height: 100vh;
+  flex-shrink: 0;
+  position: relative; overflow: hidden;
+}
+
+/* ── FLOOR GRID ── */
+.floor {
+  position: absolute; bottom: 0; left: -60%; right: -60%;
+  height: 50vh;
+  background:
+    linear-gradient(rgba(0,255,65,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,65,0.06) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: rotateX(70deg);
+  transform-origin: bottom center;
+  pointer-events: none;
+}
+
+/* ── SECTION SHARED ── */
+.room-wrap {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 90px 6% 60px;
+  gap: 60px;
+  z-index: 2;
+}
+.room-tag {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--green2); letter-spacing: .2em;
+  text-transform: uppercase; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 10px;
+}
+.room-tag::before { content: '>_'; color: var(--green); }
+.room-heading {
+  font-family: var(--display);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900; line-height: 1;
+  letter-spacing: -.01em; margin-bottom: 20px;
+}
+.room-heading .grn { color: var(--green); text-shadow: 0 0 20px var(--green); }
+.room-heading .red { color: var(--red); text-shadow: 0 0 20px var(--red); }
+.room-para {
+  font-size: 14px; color: var(--text2);
+  line-height: 1.85; margin-bottom: 14px;
+}
+.room-para strong { color: var(--green); font-weight: 600; }
+
+/* ── TERMINAL CARD ── */
+.terminal {
+  background: rgba(0,5,0,0.95);
+  border: 1px solid var(--border2);
+  border-radius: 6px; overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,255,65,0.08), inset 0 0 30px rgba(0,0,0,.5);
+}
+.terminal-bar {
+  height: 30px; background: rgba(0,255,65,0.07);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 14px; gap: 7px;
+}
+.t-dot { width: 8px; height: 8px; border-radius: 50%; }
+.terminal-bar span {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--text2); margin-left: 8px;
+}
+.terminal-body {
+  padding: 16px; font-family: var(--mono);
+  font-size: 12px; color: var(--text2); line-height: 2;
+}
+.t-g { color: var(--green); }
+.t-c { color: var(--cyan); }
+.t-r { color: var(--red); }
+.t-y { color: #FFD700; }
+.t-w { color: var(--text); }
+.t-dim { color: var(--text3); }
+.t-prompt::before { content: '$ '; color: var(--green2); }
+
+/* ── BUTTONS ── */
+.btn-hack {
+  padding: 11px 26px;
+  border: 1px solid var(--green);
+  background: var(--green-dim);
+  color: var(--green); font-family: var(--display);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .12em; border-radius: 2px;
+  text-decoration: none; cursor: pointer;
+  transition: background .2s, box-shadow .2s, transform .2s;
+  text-transform: uppercase;
+}
+.btn-hack:hover {
+  background: rgba(0,255,65,0.2);
+  box-shadow: 0 0 20px rgba(0,255,65,.3);
+  transform: translateY(-2px);
+}
+.btn-hack-red {
+  border-color: var(--red);
+  background: var(--red-dim);
+  color: var(--red);
+}
+.btn-hack-red:hover { background: rgba(255,45,45,0.2); box-shadow: 0 0 20px rgba(255,45,45,.3); }
+
+/* ── SCROLL HINT ── */
+#scroll-hint {
+  position: fixed; bottom: 32px; right: 44px;
+  z-index: 800; font-family: var(--mono);
+  font-size: 10px; color: var(--text3);
+  letter-spacing: .12em;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  animation: floatHint 3s ease infinite;
+  transition: opacity .5s;
+}
+@keyframes floatHint { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+.s-arrows { display: flex; gap: 5px; }
+.sa {
+  width: 8px; height: 8px;
+  border-right: 1.5px solid var(--green2);
+  border-bottom: 1.5px solid var(--green2);
+  transform: rotate(-45deg);
+  animation: arrowPulse 1.5s ease infinite;
+}
+.sa:nth-child(2){ animation-delay:.15s; }
+.sa:nth-child(3){ animation-delay:.3s; }
+@keyframes arrowPulse { 0%,100%{opacity:.2} 50%{opacity:1} }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes glitch {
+  0%,100%{transform:translate(0)} 10%{transform:translate(-2px,1px)}
+  20%{transform:translate(2px,-1px)} 30%{transform:translate(0)}
+}
+@keyframes scanLine {
+  0%{top:-10%} 100%{top:110%}
+}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav { padding: 14px 20px; }
+  .room-wrap { padding: 80px 5% 50px; flex-direction: column; gap: 30px; }
+}
